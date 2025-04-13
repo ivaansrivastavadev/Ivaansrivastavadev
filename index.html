@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ivaan Srivastava - Projects</title>
+  <style>
+    :root {
+      --bg: #f9f9f9;
+      --text: #111;
+      --nav: #ffffff;
+      --card: #ffffff;
+      --accent: #007bff;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    .dark {
+      --bg: #111;
+      --text: #eee;
+      --nav: #1a1a1a;
+      --card: #1f1f1f;
+      --accent: #3399ff;
+      --shadow: rgba(255, 255, 255, 0.05);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    nav {
+      background: var(--nav);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .toggle-btn {
+      cursor: pointer;
+      background: var(--accent);
+      color: white;
+      padding: 0.4rem 0.8rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background: darken(var(--accent), 10%);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .gallery.list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project {
+      background: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s;
+    }
+
+    .gallery.list .project {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+    }
+
+    .project img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .gallery.list .project img {
+      width: 200px;
+      height: auto;
+    }
+
+    .project-content {
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .project h3 {
+      margin-bottom: 0.2rem;
+    }
+
+    .project p {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .buttons {
+      margin-top: auto;
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .buttons a {
+      text-decoration: none;
+      background: var(--accent);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+    }
+
+    .buttons a:hover {
+      background: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+      .gallery.list .project {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .gallery.list .project img {
+        width: 100%;
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-title">Ivaan Srivastava</div>
+    <div class="nav-actions">
+      <button class="toggle-btn" onclick="toggleView()">Toggle View</button>
+      <button class="toggle-btn" onclick="toggleDarkMode()">🌓</button>
+    </div>
+  </nav>
+
+  <div id="projectGallery" class="gallery grid">
+    <div class="project">
+      <img src="https://via.placeholder.com/600x300" alt="Project 1" />
+      <div class="project-content">
+        <h3>Project One</h3>
+        <p>Short description of this project and what it does. Built using HTML, CSS, JS.</p>
+        <div class="buttons">
+          <a href="https://example.com" target="_blank">Go</a>
+          <a href="https://github.com" target="_blank">Source</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="project">
+      <img src="https://via.placeholder.com/600x300" alt="Project 2" />
+      <div class="project-content">
+        <h3>Project Two</h3>
+        <p>This one is a bit more complex with backend logic and data persistence.</p>
+        <div class="buttons">
+          <a href="https://example.com" target="_blank">Go</a>
+          <a href="https://github.com" target="_blank">Source</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add more projects as needed -->
+  </div>
+
+  <script>
+    // Load theme from localStorage
+    window.onload = () => {
+      if (localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark');
+      }
+    };
+
+    // Dark mode toggle
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    }
+
+    // View toggle
+    function toggleView() {
+      const gallery = document.getElementById('projectGallery');
+      gallery.classList.toggle('list');
+      gallery.classList.toggle('grid');
+    }
+  </script>
+</body>
+</html>
