@@ -12,6 +12,7 @@
       --card: #ffffff;
       --accent: #007bff;
       --shadow: rgba(0, 0, 0, 0.1);
+      --hover: #0056b3;
     }
 
     .dark {
@@ -21,6 +22,7 @@
       --card: #1f1f1f;
       --accent: #3399ff;
       --shadow: rgba(255, 255, 255, 0.05);
+      --hover: #227acc;
     }
 
     * {
@@ -71,7 +73,7 @@
     }
 
     .toggle-btn:hover {
-      background: darken(var(--accent), 10%);
+      background: var(--hover);
     }
 
     .gallery {
@@ -150,7 +152,7 @@
     }
 
     .buttons a:hover {
-      background: #0056b3;
+      background: var(--hover);
     }
 
     @media (max-width: 768px) {
@@ -177,20 +179,26 @@
 
   <div id="projectGallery" class="gallery grid">
     <div class="project">
-      <img src="assets/notes/image.png" alt="Project 1" />
       <div class="project-content">
-        <h3>Trisave</h3>
-        <p>A simple note taing app for free.</p>
+        <h3>LeaperStuff</h3>
+        <p>Leaperstuff is a site.</p>
         <div class="buttons">
-          <a href="https://github.com/ivaansrivastavadev/trisave/releases/latest" target="_blank">Go</a>
-          <a href="https://github.com/ivaansrivastavadev/trisave" target="_blank">Source</a>
+          <a href="https://leaperstuff.vercel.app" target="_blank" rel="noopener">Go</a>
         </div>
       </div>
     </div>
 
+    <div class="project">
+      <div class="project-content">
+        <h3>Games</h3>
+        <p>On Roblox.</p>
+        <div class="buttons">
+          <a href="https://www.roblox.com/users/8670523200/profile#!/creations" target="_blank" rel="noopener">Go</a>
+        </div>
+      </div>
+    </div>
     
-
-    <!-- Add more projects as needed -->
+    <!-- Add more projects here as needed -->
   </div>
 
   <script>
